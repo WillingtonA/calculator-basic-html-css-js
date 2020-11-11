@@ -1,0 +1,142 @@
+<html>
+<head>
+<title>Nuevo Intento</title>
+<script language="javascript">
+	var prim = '';
+	var sec = '';
+	var oper = '';
+	   
+	function calculo(signo, signo2){
+		if(signo == 'c'){
+			prim = '';
+			sec = '';
+			oper = '';
+			document.calc.pantalla.value = '0';
+			return;
+		}
+
+		if(signo == 'ce'){
+			sec = '';
+			document.calc.pantalla.value = '0';
+			return;
+		}
+			
+		if(signo != 'c' && signo != 'ce' && signo != '='){
+			oper = signo;
+			if(sec != ''){
+				calculo('=', oper);
+			}
+			return;
+		}
+			
+		if(signo == '='){
+			if(oper == '+'){	
+				prim = parseFloat(prim)+parseFloat(sec);
+				document.calc.pantalla.value = prim;
+			}
+			if(oper == '-'){
+				prim = parseFloat(prim)-parseFloat(sec);
+				document.calc.pantalla.value = prim;
+			}
+			if(oper == '*'){
+				prim = parseFloat(prim)*parseFloat(sec);
+				document.calc.pantalla.value = prim;
+			}
+			if(oper == '/'){
+				prim = parseFloat(prim)/parseFloat(sec);
+				document.calc.pantalla.value = prim;
+			}
+			sec = '';
+			oper = '';
+			if(signo2){
+				oper = signo2;
+			}
+			return;
+		}
+   }
+	   
+	function num(num){
+		if(oper == ''){
+			prim = prim + num;
+			document.calc.pantalla.value = prim;
+		}else{
+			sec = sec + num;
+			document.calc.pantalla.value = sec;
+		}
+   }
+</script>
+
+<style type="text/css">
+#pantalla{
+		width: 274px;
+		height: 50px;
+		font-size: 40px;
+		text-align: right;
+
+		border-right: 3px solid black;
+      border-bottom: 3px solid black;
+      border-top: 3px solid black;
+      border-left: 3px solid black;
+	}
+
+	#but{
+		width: 50px;
+		height: 50px;
+		font-size: 30px;
+	}
+	#butIgual{
+		width: 50px;
+		height: 105px;
+		font-size: 30px;
+	}
+	#butCero{
+		width: 105px;
+		height: 50px;
+		font-size: 30px;
+	}
+	#tabla{
+
+		border-right:5px solid black;
+      border-bottom:5px solid black;
+      border-top:5px solid black;
+      border-left:5px solid black;
+	}
+</style>
+</head>
+
+<body>
+<form name="calc">
+<table  align="center" id="tabla">
+	<tr>
+   	<td colspan="5"><input type="text" name="pantalla" id="pantalla" value="0" align="right" disabled=""></td>
+   </tr>
+   <tr>
+   	<td align="center"><input type="button" name="7" id="but" value="7" onClick="num('7')"></td>
+      <td align="center"><input type="button" name="8" id="but" value="8" onClick="num('8')"></td>
+      <td align="center"><input type="button" name="9" id="but" value="9" onClick="num('9')"></td>
+      <td align="center"><input type="button" name="/" id="but" value="/" onClick="calculo('/')"></td>
+      <td align="center"><input type="button" name="ce" id="but" value="ce"onClick="calculo('ce')"></td>
+   </tr>
+   <tr>
+      <td align="center"><input type="button" name="4" id="but" value="4" onClick="num('4')"></td>
+      <td align="center"><input type="button" name="5" id="but" value="5" onClick="num('5')"></td>
+      <td align="center"><input type="button" name="6" id="but" value="6" onClick="num('6')"></td>
+      <td align="center"><input type="button" name="*" id="but" value="*" onClick="calculo('*')"></td>
+      <td align="center"><input type="button" name="c" id="but" value=" C" onClick="calculo('c')"></td>
+   </tr>
+   <tr>
+      <td align="center"><input type="button" name="1" id="but" value="1" onClick="num('1')"></td>
+      <td align="center"><input type="button" name="2" id="but" value="2" onClick="num('2')"></td>
+      <td align="center"><input type="button" name="3" id="but" value="3" onClick="num('3')"></td>
+      <td align="center"><input type="button" name="-" id="but" value="-" onClick="calculo('-')"></td>
+      <td align="center" rowspan="2"><input type="button" name="=" id="butIgual" value=" =" onClick="calculo('=')"></td>
+   </tr>
+   <tr>
+      <td colspan="2"><input type="button" name="0" id="butCero" value="0" onClick="num('0')"></td>
+      <td><input type="button" name="." id="but" value="." onClick="calculo('.')"></td>
+      <td><input type="button" name="+" id="but" value="+" onClick="calculo('+')"></td>
+   </tr>
+</table>
+</form>
+</body>
+</html>
