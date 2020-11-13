@@ -1,0 +1,37 @@
+body{font-family: Courier}
+.tabla{
+	border:5px solid gray; background:black; border-radius:10px;
+}
+
+.pantalla{
+	width:517px; height:80px; font-size:70px; text-align:right; border:2px solid gray; border-radius:3px; color:black; background:#99ffdf
+}
+
+.but{
+	width:100px; height:100px; font-size:40px;
+}
+.but:hover{
+	background:cyan; border-radius:3px; background:radial-gradient(#99ffdf, #99ffdf, cyan);
+}
+
+.butIgual{
+	width:100px; height:205px; font-size:40px;
+}
+.butIgual:hover{
+	background:cyan; border-radius:3px; background:radial-gradient(#99ffdf, #99ffdf, cyan);
+}
+
+.butCero{
+	width:204px; height:100px; font-size:40px;
+}
+.butCero:hover{
+	background:cyan; border-radius:3px; background:radial-gradient(#99ffdf, #99ffdf, cyan);
+}
+
+label{
+	color:white; font-size:16px
+}
+
+hr{
+	border-color:gray
+}
