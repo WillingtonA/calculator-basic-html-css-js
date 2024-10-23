@@ -1,37 +1,69 @@
-body{font-family: Courier}
-.tabla{
-	border:5px solid gray; background:black; border-radius:10px;
+body {
+	background: #343a40;
+	font-family: Verdana;
+	color: #fff;
 }
 
-.pantalla{
-	width:517px; height:80px; font-size:70px; text-align:right; border:2px solid gray; border-radius:3px; color:black; background:#99ffdf
+label {
+	color: #6c757d;
+	font-size: 15px;
 }
 
-.but{
-	width:100px; height:100px; font-size:40px;
-}
-.but:hover{
-	background:cyan; border-radius:3px; background:radial-gradient(#99ffdf, #99ffdf, cyan);
+hr {
+	border-color: #343a40;
 }
 
-.butIgual{
-	width:100px; height:205px; font-size:40px;
+button {
+	cursor: pointer;
+	font-size: 40px;
+	border-radius: 15px;
+	border: 2px solid black;
 }
-.butIgual:hover{
-	background:cyan; border-radius:3px; background:radial-gradient(#99ffdf, #99ffdf, cyan);
-}
-
-.butCero{
-	width:204px; height:100px; font-size:40px;
-}
-.butCero:hover{
-	background:cyan; border-radius:3px; background:radial-gradient(#99ffdf, #99ffdf, cyan);
+button:hover {
+	color: #fff;
+	border-radius: 15px;
+	font-size: 39px;
 }
 
-label{
-	color:white; font-size:16px
+.tabla {
+	border: 11px solid black;
+	background: black;
+	border-radius: 15px;
 }
 
-hr{
-	border-color:gray
+.pantalla {
+	width: 517px;
+	height: 100px;
+	font-size: 70px;
+	color: #fff; 
+	text-align: right;
+	border: 0px;
+	border-radius: 15px;
+}
+
+.but {
+	width: 100px;
+	height: 100px;
+	background: #6c757d;
+}
+.but:hover {
+	background: linear-gradient(#545b62, #545b62, #545b62);
+}
+
+
+.btnEqual {
+	width: 100px;
+	height: 200px;
+	background: #545b62;
+}
+.btnEqual:hover {
+	background: radial-gradient(#007bff, #007bff, #007bff);
+}
+
+
+.butCero {
+	width:204px; height:100px; background:#545b62;
+}
+.butCero:hover {
+	background: radial-gradient(#007bff, #007bff, #007bff);
 }
