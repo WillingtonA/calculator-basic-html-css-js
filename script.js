@@ -1,26 +1,3 @@
-
-function dgebiSetter(obj) {
-	/*
-	console.log(obj);
-	console.log(Object.keys(obj));
-	console.log(Object.values(obj));
-	console.log("--" + Object.keys(obj).length);
-	*/
-	for(let key in obj) {
-		document.getElementById(key).value = obj[key];
-	}
-}
-
-function dgebiGetter(keys) {
-	let obj = new Object();
-	keys.forEach(
-		function(key){
-			obj[key] = document.getElementById(key).value;
-		}
-	);
-	return obj;
-}
-
 function number(num) {
 	let numUno = document.getElementById("numUno").value;
 	if(numUno == "0") { //Primera vez numero
@@ -35,7 +12,7 @@ function operation(operator) {
 	if(data.numDos == "0") { //Primera vez signo
 		dgebiSetter({"numDos":data.numUno, "numUno":"0"});
 	} else {
-		let res = respuesta(data.operador, data.numUno, data.numDos);
+		let res = response(data.operador, data.numUno, data.numDos);
 		dgebiSetter({"pantalla":new Intl.NumberFormat('de-DE').format(res), "numUno":"0", "numDos":res});
 	}
 	dgebiSetter({"operador":operator, "dot":""});
@@ -44,7 +21,7 @@ function operation(operator) {
 function equal() {
 	let data = dgebiGetter(["numUno", "numDos", "operador"]);
 	if(data.operador != "") {
-		let res = respuesta(data.operador, data.numUno, data.numDos);
+		let res = response(data.operador, data.numUno, data.numDos);
 		dgebiSetter({"pantalla":new Intl.NumberFormat('de-DE').format(res), "numUno":res, "numDos":"0", "operador":""});
 	}
 }
@@ -78,20 +55,28 @@ function clean() {
 	dgebiSetter({"pantalla":"0", "numUno":"0", "numDos":"0", "operador":"", "dot":""});
 }
 
-function respuesta(operator, numUno, numDos) {
-	if(operator == "+") {
-		return parseFloat(numUno) + parseFloat(numDos);
-	}
 
-	if(operator == "-") {
-		return parseFloat(numDos) - parseFloat(numUno);
-	}
+function response(operator, num1, num2) {
+	let n1 = parseFloat(num1);
+	let n2 = parseFloat(num2);
+	const operations = {
+		'+': (a, b) => a + b,
+		'-': (b, a) => a - b,
+		'*': (b, a) => a * b,
+		'/': (b, a) => a / b
+	};
+	return operations[operator](n1, n2);
+}
 
-	if(operator == "*") {
-		return parseFloat(numDos) * parseFloat(numUno);
-	}
+function dgebiSetter(obj) {
+	Object.entries(obj).forEach(([key, value]) => {
+		document.getElementById(key).value = value;
+	});
+}
 
-	if(operator == "/") {
-		return parseFloat(numDos) / parseFloat(numUno);
-	}
+function dgebiGetter(keys) {
+	return keys.reduce((acc, key) => {
+		acc[key] = document.getElementById(key).value;
+		return acc;
+	}, {});
 }
